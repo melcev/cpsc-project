@@ -445,3 +445,97 @@ def produce_label(start: int, end: int) -> str:
     return str(start) + "-" + str(end - 1)
 
 display_bar_chart()
+
+
+# Note that here we're importing matplotlib.pyplot as plt. That means we need to use the name 
+# plt whenever we want to use the pyplot library. In other examples, we've imported it as pyplot 
+# and that would mean we need to use the name pyplot whenever we want to use the pyplot library.
+import matplotlib.pyplot as plt
+
+@typecheck
+def display_bar_chart(ratio: List[AverageRatio]) -> None:
+    """
+    display a bar chart showing the average attack/defense ratios of each type of Pokemon in the Sapphire game
+    
+    """
+    # return None #stub
+    # Template based on visualization
+    
+    # the width of each bar
+    bar_width = 500
+    
+    plt.axis ([0,100,0,30])
+    
+    # the middle coordinate for each of the bars for the bar chart
+    # we want to space them every 10 pixels, since we used a bar width of 9.
+    middle_of_bars = produce_num_sequence(ratio, 5, bar_width + 500)
+    
+    # Notice that you could write a function to produce middle_of_bars.
+    # (Imagine we gave you the array means above and asked "design
+    # a function to produce a list of the same length as means
+    # containing multiples of 10 like [0, 10, 20, 30, ...]". Could
+    # you design that function?)
+    
+    # the opacity for the bars. It must be between 0 and 1, and higher numbers are more opaque (darker)
+    opacity = 0.8
+    
+    # create the first bar chart
+    rects1 = plt.bar(middle_of_bars, 
+                     ratio,                         # list containing the height for each bar, here the means
+                     bar_width,
+                     alpha=opacity,                 # set the opacity
+                     color='b')                     # set the colour (here, blue)
+
+    # set the labels for the x-axis, y-axis, and plot title
+    plt.xlabel('Type')
+    plt.ylabel('Average Ratio')
+    plt.title('Average Ratio by Pokemon Type')
+    
+    # set the range for the axes
+    # [x-min, x-max, y-min, y-max]
+    plt.axis([1,18,0,30])
+    
+    # set the x-coordinate for positioning the labels. Here, we want each label to be in the middle of each bar
+    x_coord_labels = middle_of_bars
+    
+    # set the labels for each 'tick' on the x-axis
+    tick_labels = type_list(all_types(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv"))))
+    
+    plt.xticks(x_coord_labels, tick_labels)
+    
+    # show the plot
+    plt.show()
+    
+    # by default, Python returns None if it gets to the end of a function and there is no call to return
+    # so we could have omitted the next line of code. It also returns None when there is a return 
+    # statement that does not explicitly return a value (like we have here)
+    return
+    
+# Note that this can be used with List[int] for values as well.
+# In fact, it doesn't really matter what values is a list of, but we haven't learned how to note that.
+@typecheck
+def produce_num_sequence(values: List[float], initial: float, gap: float) -> List[float]:
+    """
+    Produce a list of numbers like [initial, initial + gap, initial + 2*gap, ...] of the same
+    length as values, e.g., to give alignment coordinates for a plot. The number
+    of numbers in the list is equal to len(values). The first value is initial. The gap between values
+    is gap.
+    
+    E.g., [5,15,25,35,45,55,65,75] for 8 values, initial == 5, and gap == 10.
+    """
+    #return []  #stub
+    # Template from List[float] with two additional parameters
+    
+    # nums is the numbers for the values seen so far
+    nums = []  # type: List[int]
+    
+    # next_num is the next number to use
+    next_num = initial
+    
+    for val in values:
+        nums.append(next_num)
+        next_num = next_num + gap
+    
+    return nums
+
+display_bar_chart(all_ratio(type_list(all_types(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv"))))))
