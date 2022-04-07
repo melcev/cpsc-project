@@ -348,3 +348,8 @@ expect(read_sapphire("sapphire_test2.csv"),[274, 275, 276, 277])
 
 # show testing summary
 summary()
+
+avg_ratio_typed(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv")), "fairy")
+type_list(all_types(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv"))))
+all_ratio(type_list(all_types(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv")))))
+display_bar_chart(all_ratio(type_list(all_types(filtered(read("pokemon.csv"), read_sapphire("sapphire.csv"))))))
