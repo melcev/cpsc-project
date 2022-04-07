@@ -1,0 +1,74 @@
+# Dream Teams in Pokemon Sapphire
+
+
+
+
+### Project Overview
+
+
+
+<b> Question: What are the "dream teams" for pokemon Sapphire? <b>
+
+- Depends on the starter Pokemon you pick
+- Given the condition that each Pokemon on the team should have different types
+    
+    
+<b> CSV File: pokemon.csv <b>
+
+- Contains sp_attack and sp_defense for each pokemon
+    
+  
+<b> CSV File: sapphire.csv <b>
+
+- Contains pokedex_number for each mokemon in pokemon sapphire
+    
+    
+<b> Why is it interesting <b>
+
+- Hoping to find wich starter pokemon will create the dream team in Sapphire
+    
+    
+### Design Choices
+    
+<b> Code Design <b>
+
+- Helper Functions for our main function
+- Used the "How to Design Data" definitions to create the templates
+
+
+<b> Graph Design <b>
+
+- Data was plotted on a bar graph
+- x-axis represents the pokemon type
+- y-axis represents average between sp_attack and dsp_defense
+
+    
+Graph
+
+
+### Challenges
+
+- In wich circumstance to use wich template
+- When to use a helper function
+- Correcting and debugging the bar graph
+- Debugging lines of code
+- Improving readability
+
+
+### Future Work
+
+<b> Technical Skills <b>
+
+- Knowing how to design functins
+- Knowing how to create data definitions
+- Knowing how to create template
+
+    
+<b> Transferable Skills <b>
+
+- Problem solving
+- Time manadgement
+- Organization
+- Attention to detail
+- Teamwork and cooperation
+- Comunication
